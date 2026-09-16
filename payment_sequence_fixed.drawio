@@ -1,0 +1,114 @@
+<mxfile host="app.diagrams.net" modified="2026-09-16T00:00:00.000Z" agent="Claude" version="24.0.0" type="device">
+  <diagram name="Payment Sequence - Fixed" id="paymentSeqFixed">
+    <mxGraphModel dx="1100" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="750" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Lifeline header boxes -->
+        <mxCell id="box1" value="Khach hang&#10;(Actor)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="40" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="box2" value="Cong Thanh Toan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="40" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="box3" value="Ngan Hang Loi" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="40" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="box4" value="EmailServer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="770" y="40" width="160" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Lifelines (dashed vertical) -->
+        <mxCell id="life1" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="80" as="sourcePoint" />
+            <mxPoint x="100" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="life2" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="80" as="sourcePoint" />
+            <mxPoint x="350" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="life3" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="80" as="sourcePoint" />
+            <mxPoint x="600" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="life4" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="850" y="80" as="sourcePoint" />
+            <mxPoint x="850" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- m1: Sync, KH -> CTT -->
+        <mxCell id="msg1" value="1. Nhap the tin dung [Sync]" style="endArrow=block;endFill=1;html=1;fontSize=11;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="130" as="sourcePoint" />
+            <mxPoint x="350" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- m2: Self, CTT (CORRECTED from Async to a fake lifeline) -->
+        <mxCell id="msg2" value="2. kiemTraDinhDangThe() [Self]" style="endArrow=block;endFill=1;html=1;fontSize=11;rounded=0;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="165" as="sourcePoint" />
+            <mxPoint x="350" y="200" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="415" y="165" />
+              <mxPoint x="415" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note1" value="Loi 1 - da sua: Self message&#10;(khong dung lifeline gia)" style="text;html=1;align=left;verticalAlign=middle;fontColor=#B85450;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="425" y="168" width="220" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- m3: Sync, CTT -> NHL -->
+        <mxCell id="msg3" value="3. processPayment() [Sync]" style="endArrow=block;endFill=1;html=1;fontSize=11;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="250" as="sourcePoint" />
+            <mxPoint x="600" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- m4: Return, NHL -> CTT -->
+        <mxCell id="msg4" value="4. Ket qua giao dich [Return]" style="endArrow=open;endFill=0;dashed=1;html=1;fontSize=11;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="290" as="sourcePoint" />
+            <mxPoint x="350" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- m5: Return, CTT -> KH -->
+        <mxCell id="msg5" value="5. Hien thi thanh cong [Return]" style="endArrow=open;endFill=0;dashed=1;html=1;fontSize=11;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="330" as="sourcePoint" />
+            <mxPoint x="100" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- m6: Async, CTT -> EmailServer (CORRECTED from Sync+Return) -->
+        <mxCell id="msg6" value="6. sendReceiptEmail() [Async]" style="endArrow=open;endFill=0;dashed=0;html=1;fontSize=11;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="380" as="sourcePoint" />
+            <mxPoint x="850" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note2" value="Loi 2 - da sua: Async, khong co&#10;mui ten Return di kem theo sau" style="text;html=1;align=left;verticalAlign=middle;fontColor=#B85450;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="500" y="390" width="280" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend" value="Chu thich: Sync = net lien, dau dac | Async = net lien, dau ho | Return = net dut, dau ho | Self = vong cung tren chinh lifeline" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="20" y="440" width="900" height="20" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
